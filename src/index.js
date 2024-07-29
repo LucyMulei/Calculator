@@ -2,14 +2,14 @@ const buttons= document.querySelectorAll('button')
 const input = document.querySelector('input')
 currentInput=''
 firstNumber=''
-arithmetic=''
 buttons.forEach(function (button) {
   button.addEventListener("click", function () {
     const buttonText = button.textContent;
+    if (!["+", "-", "*", "/", "="].includes(buttonText)) {
       currentInput += buttonText;
       input.value = currentInput;
     }
-  );
+});
 });
 
 const clear =document.querySelector('#clear')
@@ -25,6 +25,34 @@ clear.addEventListener('click',function(){
    if (currentInput !== "") {
      firstNumber = currentInput;
      operator = "+";
+     currentInput = "";
+     input.value = "";
+   }
+ });
+ 
+ const substract = document.querySelector("#subtract");
+substract.addEventListener("click", function () {
+  if (currentInput !== "") {
+    firstNumber = currentInput;
+    operator = "-";
+    currentInput = "";
+    input.value = "";
+  }
+});
+ const multiply = document.querySelector('#multiply')
+ multiply.addEventListener("click", function () {
+   if (currentInput !== "") {
+     firstNumber = currentInput;
+     operator = "*";
+     currentInput = "";
+     input.value = "";
+   }
+ });
+ const divide = document.querySelector("#divide");
+ divide.addEventListener("click", function () {
+   if (currentInput !== "") {
+     firstNumber = currentInput;
+     operator = "/";
      currentInput = "";
      input.value = "";
    }
@@ -53,32 +81,5 @@ clear.addEventListener('click',function(){
      firstNumber = "";
      operator = "";
    }
- });
- const substract = document.querySelector("#subtract");
- addition.addEventListener("click", function () {
-    if (currentInput !== "") {
-      firstNumber = currentInput;
-      operator = "-";
-      currentInput = "";
-      input.value = "";
-    }
- });
- const multiply = document.querySelector('#multiply')
- addition.addEventListener('click', function(){
-    if (currentInput !== "") {
-      firstNumber = currentInput;
-      operator = "*";
-      currentInput = "";
-      input.value = "";
-    }
- })
- const divide = document.querySelector("#divide");
- addition.addEventListener("click", function () {
-    if (currentInput !== "") {
-      firstNumber = currentInput;
-      operator = "/";
-      currentInput = "";
-      input.value = "";
-    }
  });
 
