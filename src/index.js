@@ -5,10 +5,9 @@ firstNumber=''
 buttons.forEach(function (button) {
   button.addEventListener("click", function () {
     const buttonText = button.textContent;
-    if (!["+", "-", "*", "/", "="].includes(buttonText)) {
-      currentInput += buttonText;
-      input.value = currentInput;
-    }
+    currentInput += buttonText;
+    input.value = currentInput;
+    
 });
 });
 
