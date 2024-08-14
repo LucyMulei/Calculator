@@ -1,8 +1,9 @@
-const buttons= document.querySelectorAll('button')
+const numbers= document.querySelectorAll('.number')
 const input = document.querySelector('input')
+const operators = document.querySelectorAll('.operator')
 currentInput=''
 firstNumber=''
-buttons.forEach(function (button) {
+numbers.forEach(function (button) {
   button.addEventListener("click", function () {
     const buttonText = button.textContent;
     currentInput += buttonText;
@@ -11,7 +12,17 @@ buttons.forEach(function (button) {
 });
 });
 
-const clear =document.querySelector('#clear')
+operators.forEach(operatorButton => {
+  operatorButton.addEventListener("click", () => {
+    if (currentInput !== "") {
+      firstNumber = currentInput;
+      operator = operatorButton.textContent
+      currentInput = "";
+      input.value = "";
+    }
+  });
+})
+const clear = document.querySelector("#clear");
 clear.addEventListener('click',function(){
     input.value = "0"
     currentInput=''
@@ -19,43 +30,7 @@ clear.addEventListener('click',function(){
     firstNumber=''
 
 })
- const addition = document.querySelector("#addition");
- addition.addEventListener("click", function () {
-   if (currentInput !== "") {
-     firstNumber = currentInput;
-     operator = "+";
-     currentInput = "";
-     input.value = "";
-   }
- });
  
- const substract = document.querySelector("#subtract");
-substract.addEventListener("click", function () {
-  if (currentInput !== "") {
-    firstNumber = currentInput;
-    operator = "-";
-    currentInput = "";
-    input.value = "";
-  }
-});
- const multiply = document.querySelector('#multiply')
- multiply.addEventListener("click", function () {
-   if (currentInput !== "") {
-     firstNumber = currentInput;
-     operator = "*";
-     currentInput = "";
-     input.value = "";
-   }
- });
- const divide = document.querySelector("#divide");
- divide.addEventListener("click", function () {
-   if (currentInput !== "") {
-     firstNumber = currentInput;
-     operator = "/";
-     currentInput = "";
-     input.value = "";
-   }
- });
  const equals = document.querySelector("#equals");
  equals.addEventListener("click", function () {
    if (operator !== "" && currentInput !== "") {
